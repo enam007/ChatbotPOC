@@ -15,4 +15,4 @@ class PromptParserNode:
 
         state["parsed_input"] = parsed
         self.state["parsed_input"] = parsed
-        return state 
+        return state
