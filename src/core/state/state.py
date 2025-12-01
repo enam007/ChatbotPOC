@@ -2,7 +2,12 @@ from typing import Annotated, Optional
 from typing_extensions import TypedDict
 from langgraph.graph.message import add_messages
 from langchain_core.messages import HumanMessage, AIMessage
-from src.core.models.room import Room, PromptInput,TasksOutput,MoodboardOutput,FilePlaceholderOutput, TasksWithDescriptionOutput
+from pydantic import BaseModel, Field
+from enum import Enum
+
+class IntentEnum(str, Enum):
+    FILTER = "Filter"
+    SORT = "Sort"
 
 class ChatbotState(TypedDict):
     """
@@ -10,3 +15,14 @@ class ChatbotState(TypedDict):
     """
     messages: Annotated[list, add_messages]
     prompt: str
+
+class AgentState(TypedDict):
+    """
+    Graph State For Agent pipeline.
+    """
+    prompt: str
+    intent : str
+    final_response: str
+
+class IntentOutput(BaseModel):
+    intent: IntentEnum   = Field(..., description="Intent title classified from user prompt.")

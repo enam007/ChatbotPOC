@@ -1,12 +1,12 @@
 # src/langgraphengine/nodes/parser_node.py
 
 from src.core.models.room import PromptInput
-from src.core.state.state import ChatbotState
+from src.core.state.state import AgentState
 class PromptParserNode:
     def __init__(self):
         self.state = {}
 
-    def parse(self, state: ChatbotState) -> ChatbotState:
+    def parse(self, state: AgentState) -> AgentState:
         """
         Parse raw user prompt.
         """
