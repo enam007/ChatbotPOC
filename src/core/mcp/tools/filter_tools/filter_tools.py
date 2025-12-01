@@ -100,6 +100,20 @@ async def get_all_tags(token: str) -> list[dict]:
     client = MCPClient(token, verify_ssl=False)
     return await client.request("GET", f"/Organization/GetAllTags/{current_date}")
 
+@tool(
+    "get_filter_configuration",
+    return_direct=False
+)
+async def get_filter_configuration(token: str) -> list[dict]:
+    """
+    Fetches all filter configuration.
+
+    Returns:
+        list[dict]: Filter configuration objects.
+    """
+    client = MCPClient(token, verify_ssl=False)
+    return await client.request("GET", f"/Settings/FilterConfiguration/peoplelist/0?onlyFavorite=false")
+
 
 @tool(
     "get_organization_types_filter",

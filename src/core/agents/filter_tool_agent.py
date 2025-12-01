@@ -71,15 +71,17 @@ class FilterAgent(BaseAgent):
 🎯 Goal
 - Convert a natural-language user request into a structured filter.
 - Identify which column the user wants to filter.
+-Always call `get_filter_configuration` to resolve fieldId and filterType.
 - Identify which tool can resolve the value to an ID.
-- Use the tool to get the value ID.
+- Use the tool to get the selectedValues.
 - Output a valid normalized JSON response.
 
 ✅ OUTPUT FORMAT
 Always respond with JSON only:
 {
-  "column": "<column_name>",
-  "value_id": "<id>"
+  "fieldId": "<fieldId>",
+  "filterType": "<filterType>",
+   "selectedValues": "<resolved_value_id>"
 }
 
 🚨 RULES
